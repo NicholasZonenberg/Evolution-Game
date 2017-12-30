@@ -17,6 +17,8 @@ namespace Evolution_Game_Part_1
         private Common.actorType _type;
         // player tags (Will change as the game progresses)
         private List<Common.actorTags> _tagList;
+        // the symbol of the player
+        private char _symbol;
 
         // Properties:
         // gets and sets the players name (the player name does not change so no set command)
@@ -43,6 +45,32 @@ namespace Evolution_Game_Part_1
         {
             get { return _tagList; }
             set { }
+        }
+        // gets and sets the player symbol
+        public char symbol
+        {
+            get { return _symbol; }
+            set { }
+        }
+
+        // Constructor:
+        /// <summary>
+        /// Creates the player from input
+        /// </summary>
+        /// <param name="iName">The name of the player</param>
+        /// <param name="iAge">The starting age of the player.  Required to be within a fixxed range externly</param>
+        public Player (string iName, int iAge)
+        {
+            // sets the name of the player to the input name
+            _name = iName;
+            // sets the age of the player to the input age
+            _age = iAge;
+            // sets the player type to player
+            _type = Common.actorType.player;
+            // at this point the player starts with no tags.  This will likely change as development continues
+            _tagList = new List<Common.actorTags>();
+            // sets the player symbol
+            symbol = 'P';
         }
     }
 }

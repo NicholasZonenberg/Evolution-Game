@@ -23,6 +23,13 @@ namespace Evolution_Game_Part_1
             set;
         }
 
+        // the ascii symbol of the actor
+        char symbol
+        {
+            get;
+            set;
+        }
+
         // space reserved for the body class not yet made that will include the various components and body parts of the actor
         //
 
