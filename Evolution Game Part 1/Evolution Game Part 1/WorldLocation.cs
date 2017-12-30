@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//
+//  First thing set this up so it can be added to the Actor interface
+//
+
 namespace Evolution_Game_Part_1
 {
     /// <summary>
