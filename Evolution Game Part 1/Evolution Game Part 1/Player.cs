@@ -19,6 +19,8 @@ namespace Evolution_Game_Part_1
         private List<Common.actorTags> _tagList;
         // the symbol of the player
         private char _symbol;
+        // the posistion of the player
+        private WorldLocation _position;
 
         // Properties:
         // gets and sets the players name (the player name does not change so no set command)
@@ -52,6 +54,12 @@ namespace Evolution_Game_Part_1
             get { return _symbol; }
             set { }
         }
+        // gets and sets the players position
+        public WorldLocation position
+        {
+            get { return _position; }
+            set { }
+        }
 
         // Constructor:
         /// <summary>
@@ -70,7 +78,9 @@ namespace Evolution_Game_Part_1
             // at this point the player starts with no tags.  This will likely change as development continues
             _tagList = new List<Common.actorTags>();
             // sets the player symbol
-            symbol = 'P';
+            _symbol = 'P';
+            // sets the players posistion (not final needs changing once consturctor is made)
+            _position = new WorldLocation();
         }
     }
 }

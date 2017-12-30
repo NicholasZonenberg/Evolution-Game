@@ -46,5 +46,11 @@ namespace Evolution_Game_Part_1
             get;
             set;
         }
+
+        WorldLocation position
+        {
+            get;
+            set;
+        }
     }
 }
