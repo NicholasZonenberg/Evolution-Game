@@ -27,14 +27,14 @@ namespace Evolution_Game_Part_1
         public string name
         {
             get { return _name; }
-            set { }
+            set { _name = value; }
         }
         // gets and sets the age of the player
         public int age
         {
             get { return _age; }
             // this will be used by a time class
-            set { }
+            set { _age = value; }
         }
         // gets and sets the actor type (the player does not change type)
         public Common.actorType type
@@ -65,14 +65,8 @@ namespace Evolution_Game_Part_1
         /// <summary>
         /// Creates the player from input
         /// </summary>
-        /// <param name="iName">The name of the player</param>
-        /// <param name="iAge">The starting age of the player.  Required to be within a fixxed range externly</param>
-        public Player (string iName, int iAge)
+        public Player ()
         {
-            // sets the name of the player to the input name
-            _name = iName;
-            // sets the age of the player to the input age
-            _age = iAge;
             // sets the player type to player
             _type = Common.actorType.player;
             // at this point the player starts with no tags.  This will likely change as development continues

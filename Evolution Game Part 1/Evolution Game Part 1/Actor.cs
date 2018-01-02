@@ -30,6 +30,8 @@ namespace Evolution_Game_Part_1
             set;
         }
 
+        // space reserved for movement speed.  Cannot be properly implemented until clock class is functional
+
         // space reserved for the body class not yet made that will include the various components and body parts of the actor
         //
 

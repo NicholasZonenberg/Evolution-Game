@@ -49,6 +49,7 @@
     <Compile Include="Clock.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Display.cs" />
+    <Compile Include="Input.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="ProceduleGenerator.cs" />
     <Compile Include="Program.cs" />
