@@ -16,6 +16,49 @@ namespace Evolution_Game_Part_1
         }
 
         /// <summary>
+        /// gets a valid int input within a range
+        /// </summary>
+        /// <param name="max">highest value that is accepted</param>
+        /// <param name="min">lowest value that is accepted</param>
+        /// <returns>the users input</returns>
+        public int validIntInput(int min, int max)
+        {
+            // Bool for wether the user entered valid input
+            bool validInput = false;
+            // int to store user input for checking
+            int tempInt = 0;
+            // loops through until the player has entered valid data
+            while (!validInput)
+            {
+                // lets the user know what is being asked for
+                Console.Write("Enter a value between " + min + " and " + max + ": ");
+                // gets the users input
+                string input = Console.ReadLine();
+                // tries to parse the user input to an int
+                if (!int.TryParse(input, out tempInt))
+                {
+                    // if the input is not an int print this
+                    Console.WriteLine("Please enter a whole number");
+                }
+                // checks to see if input is in valid range
+                else if (tempInt < min || tempInt > max)
+                {
+                    // if the user input int is outside of the valid range
+                    Console.WriteLine("Please enter a whole number between " + min + " and " + max);
+                }
+                // exits the loop
+                else
+                {
+                    // exits the loop
+                    validInput = true;
+                }
+            }
+            // returns the valid user input
+            return tempInt;
+        }
+
+
+        /// <summary>
         /// handles player movement
         /// </summary>
         /// <param name="player">the player</param>
@@ -71,7 +114,7 @@ namespace Evolution_Game_Part_1
                 else
                 {
                     display.clear();
-                    display.printWorld(actorList, world);
+                    display.printWorld(actorList, world, player);
                     Console.WriteLine("Invalid Input");
                 }
             }

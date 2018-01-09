@@ -14,18 +14,18 @@ namespace Evolution_Game_Part_1
             List<Actor> actorList = new List<Actor>();
             // creates the player
             Player player = new Player();
+            // the input object which will handle player input
+            Input input = new Input();
             // the setup object which is used for setting up the game
-            Setup gameSetup = new Setup();
+            Setup gameSetup = new Setup(input);
             // creates the display class that will handle displaying the game
             Display display = new Display();
             // sets up the world for the game
             World world = new World();
-            // the input object which will handle player input
-            Input input = new Input();
             // adds the player to the actor list
             actorList.Add(player);
             // calls the Setup setup game function to set up the game
-            gameSetup.setupGame(player);
+            gameSetup.setupGame(player, display);
 
             // game loop:
             while (true)
@@ -33,7 +33,7 @@ namespace Evolution_Game_Part_1
                 // clears the screen
                 display.clear();
                 // prints the world
-                display.printWorld(actorList, world);
+                display.printWorld(actorList, world, player);
                 // gets and moves the player
                 input.playerMovement(player, world, display, actorList);
             }
