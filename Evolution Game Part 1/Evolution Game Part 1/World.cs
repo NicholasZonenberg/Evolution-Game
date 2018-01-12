@@ -13,6 +13,14 @@ namespace Evolution_Game_Part_1
     {
         // the 2D array of chars repersenting the world map (This is very likely to be changed heavily and or deleted later in development)
         public char[,][,] worldMap;
+        // the width and length of the cells
+        private const int cellSize = 5;
+        // gets the width and length of the cells
+        public int getCellSize
+        {
+            get { return cellSize; }
+        }
+
 
         /// <summary>
         /// this will set up the world using the procedule generator (Not yet in use)
@@ -28,15 +36,15 @@ namespace Evolution_Game_Part_1
         public World()
         {
             worldMap = new char[3, 3][,];
-            worldMap[0, 0] = new char[5, 5]
+            worldMap[0, 0] = new char[cellSize, cellSize]
             {
                 {'=','=','=','-','-' },
                 {'=','=','=','=','-' },
                 {'=','=','=','=','-' },
                 {'=','=','=','=','=' },
-                {'~','~','=','=','-' }
+                {'~','~','=','=','-' },
             };
-            worldMap[1, 0] = new char[5, 5]
+            worldMap[1, 0] = new char[cellSize, cellSize]
             {
                 {'~','~','=','=','-' },
                 {'~','~','=','-','-' },
@@ -44,7 +52,7 @@ namespace Evolution_Game_Part_1
                 {'~','-','-','-','-' },
                 {'~','~','~','^','-' }
             };
-            worldMap[2, 0] = new char[5, 5]
+            worldMap[2, 0] = new char[cellSize, cellSize]
             {
                 {'~','~','^','^','^' },
                 {'~','~','^','^','^' },
@@ -52,7 +60,7 @@ namespace Evolution_Game_Part_1
                 {'~','^','^','^','#' },
                 {'^','^','#','#','#' }
             };
-            worldMap[0, 1] = new char[5, 5]
+            worldMap[0, 1] = new char[cellSize, cellSize]
             {
                 {'-','*','*','*','*' },
                 {'-','*','*','H','*' },
@@ -60,7 +68,7 @@ namespace Evolution_Game_Part_1
                 {'-','-','H','H','H' },
                 {'-','-','-','H','H' }
             };
-            worldMap[0, 2] = new char[5, 5]
+            worldMap[0, 2] = new char[cellSize, cellSize]
             {
                 {'*','*','*','*','*' },
                 {'*','*','*','H','H' },
@@ -68,7 +76,7 @@ namespace Evolution_Game_Part_1
                 {'H','H','H','@','H' },
                 {'H','@','@','@','@' }
             };
-            worldMap[1, 1] = new char[5, 5]
+            worldMap[1, 1] = new char[cellSize, cellSize]
             {
                 {'-','-','O','H','H' },
                 {'-','-','O','H','H' },
@@ -76,7 +84,7 @@ namespace Evolution_Game_Part_1
                 {'-','-','O','O','H' },
                 {'^','-','O','O','O' }
             };
-            worldMap[1, 2] = new char[5, 5]
+            worldMap[1, 2] = new char[cellSize, cellSize]
             {
                 {'H','H','@','@','@' },
                 {'H','H','M','@','@' },
@@ -84,7 +92,7 @@ namespace Evolution_Game_Part_1
                 {'O','O','O','M','M' },
                 {'O','O','O','M','~' }
             };
-            worldMap[2, 1] = new char[5, 5]
+            worldMap[2, 1] = new char[cellSize, cellSize]
             {
                 {'^','-','-','O','O' },
                 {'^','^','-','X','O' },
@@ -92,7 +100,7 @@ namespace Evolution_Game_Part_1
                 {'#','#','#','X','X' },
                 {'#','#','#','#','#' }
             };
-            worldMap[2, 2] = new char[5, 5]
+            worldMap[2, 2] = new char[cellSize, cellSize]
             {
                 {'O','O','M','~','~' },
                 {'X','O','O','~','~' },

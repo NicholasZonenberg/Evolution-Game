@@ -76,15 +76,30 @@ namespace Evolution_Game_Part_1
                 // handles valid input
                 if (userInput == "w")
                 {
+                    // temp solution will need to work with player speed when implemented
+                    player.position.y--;
+                    // check if cell change happens from movement.  If cell change does not happen revert check
+                    if (!player.position.changeCell(world))
+                    {
+                        player.position.y++;
+                    }
+                    // if player remains within bounds move them
                     if (player.position.y > 0)
                     {
-                        // temp solution will need to work with player speed when implemented
                         player.position.y--;
                     }
                     validInput = true;
                 }
                 else if (userInput == "a")
                 {
+                    // temp solution will need to work with player speed when implemented
+                    player.position.x--;
+                    // check if cell change happens from movement.  If cell change does not happen revert check
+                    if (!player.position.changeCell(world))
+                    {
+                        player.position.x++;
+                    }
+                    // if player remains within bounds move them
                     if (player.position.x > 0)
                     {
                         // temp solution will need to work with player speed when implemented
@@ -94,7 +109,15 @@ namespace Evolution_Game_Part_1
                 }
                 else if (userInput == "s")
                 {
-                    if (player.position.y < world.worldMap.GetLength(0) - 1)
+                    // temp solution will need to work with player speed when implemented
+                    player.position.y++;
+                    // check if cell change happens from movement.  If cell change does not happen revert check
+                    if (!player.position.changeCell(world))
+                    {
+                        player.position.y--;
+                    }
+                    // if player remains within bounds move them
+                    if (player.position.y < world.getCellSize - 1)
                     {
                         // temp solution will need to work with player speed when implemented
                         player.position.y++;
@@ -103,7 +126,15 @@ namespace Evolution_Game_Part_1
                 }
                 else if (userInput == "d")
                 {
-                    if (player.position.x < world.worldMap.GetLength(1) - 1)
+                    // temp solution will need to work with player speed when implemented
+                    player.position.x++;
+                    // check if cell change happens from movement.  If cell change does not happen revert check
+                    if (!player.position.changeCell(world))
+                    {
+                        player.position.x--;
+                    }
+                    // if player remains within bounds move them
+                    if (player.position.x < world.getCellSize - 1)
                     {
                         // temp solution will need to work with player speed when implemented
                         player.position.x++;

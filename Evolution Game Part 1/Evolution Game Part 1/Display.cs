@@ -25,7 +25,7 @@ namespace Evolution_Game_Part_1
             // temp fix as some situations will allow more than one actor on a location at a time
             // if there is an actor there do not print the map char instead use actor char
             bool actorOnPos = false;
-            if (!(player.position.x + displaySize[0] > world.worldMap.GetLength(1) - 1) && !(player.position.x - displaySize[0] < 0))
+            /*if (!(player.position.x + displaySize[0] > world.worldMap.GetLength(1) - 1) && !(player.position.x - displaySize[0] < 0))
             {
                 maxX = player.position.x + displaySize[0];
                 minX = player.position.x - displaySize[0];
@@ -60,7 +60,33 @@ namespace Evolution_Game_Part_1
                             Console.Write(world.worldMap[y, x]);
                         }
                     }
+                }*/
+
+            for (int y = 0; y < world.getCellSize; y++)
+            {
+                for (int x = 0; x < world.getCellSize; x++)
+                {
+                    // resets to false for each tile
+                    actorOnPos = false;
+                    // checks if there is an actor there
+                    // This is inneficient but will do for now
+                    for (int c = 0; c < actorList.Count; c++)
+                    {
+                        // if there is an actor at that posistion
+                        if (actorList[c].position.x == x && actorList[c].position.y == y)
+                        {
+                            // print the actor instead of the map symbol
+                            Console.Write(actorList[c].symbol);
+                            actorOnPos = true;
+                        }
+                        // if there is no actor there print the world char
+                        if (!actorOnPos)
+                        {
+                            Console.Write(world.worldMap[player.position.cellY, player.position.cellX][y, x]);
+                        }
+                    }
                 }
+
                 // goes to next line
                 Console.WriteLine();
             }
