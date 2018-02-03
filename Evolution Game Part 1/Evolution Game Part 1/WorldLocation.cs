@@ -73,7 +73,7 @@ namespace Evolution_Game_Part_1
         /// </summary>
         /// <param name="world">the world in use</param>
         /// <returns>true if a cell change happened false otherwise</returns>
-        public bool changeCell(World world)
+        public bool changeCell(World world, Display display, Player player)
         {
             // if the actor is at the right edge of a cell
             if (_x > world.getCellSize - 1)
@@ -85,6 +85,8 @@ namespace Evolution_Game_Part_1
                     _cellX++;
                     // reset the actors posistion to 0 within the cell
                     _x = -1;
+                    // player cell changed update the loaded cells
+                    display.setLoadedCells(world, player);
                     // cell change happened return true
                     return true;
                 }
@@ -99,6 +101,8 @@ namespace Evolution_Game_Part_1
                     _cellX--;
                     // reset the actors posistion to 0 within the cell
                     _x = world.getCellSize;
+                    // player cell changed update the loaded cells
+                    display.setLoadedCells(world, player);
                     // cell change happened return true
                     return true;
                 }
@@ -113,6 +117,8 @@ namespace Evolution_Game_Part_1
                     _cellY++;
                     // reset the actors posistion to 0 within the cell
                     _y = -1;
+                    // player cell changed update the loaded cells
+                    display.setLoadedCells(world, player);
                     // cell change happened return true
                     return true;
                 }
@@ -127,6 +133,8 @@ namespace Evolution_Game_Part_1
                     _cellY--;
                     // reset the actors posistion to 0 within the cell
                     _y = world.getCellSize;
+                    // player cell changed update the loaded cells
+                    display.setLoadedCells(world, player);
                     // cell change happened return true
                     return true;
                 }

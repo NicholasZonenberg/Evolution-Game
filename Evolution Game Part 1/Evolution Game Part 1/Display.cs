@@ -10,7 +10,11 @@ namespace Evolution_Game_Part_1
     class Display
     {
         // the size of the world that is displayed
-        public int []displaySize = { 0, 0 };
+        public int[] displaySize = { 0, 0 };
+        int[] cordOfTopRightLoadedTile = { 0, 0 };
+        char[,] loadedCells;
+        int[] cellsToLoad = { 0, 0 };
+        int[] cellRadiusToLoad = { 0, 0 };
         int maxX = 0;
         int minX = 0;
         int maxY = 0;
@@ -98,6 +102,66 @@ namespace Evolution_Game_Part_1
         public void clear()
         {
             Console.Clear();
+        }
+
+        /// <summary>
+        /// This sets the size of the loaded cell array and needs to be called before any displaying happens
+        /// </summary>
+        /// <param name="world">the world in use by the game</param>
+        public void setLoadedCellsSize(World world)
+        {
+            // sets the number of cells to load in the x axis so there is a buffer of one cell beyond the view range
+            cellRadiusToLoad[0] = (displaySize[0] / world.getCellSize + 1);
+            cellsToLoad[0] = ((int)(displaySize[0] / world.getCellSize + 1)) * 2 + 1;
+            // sets the number of cells to load in the x axis so there is a buffer of one cell beyond the view range
+            cellRadiusToLoad[1] = (displaySize[1] / world.getCellSize + 1);
+            cellsToLoad[1] = ((int)(displaySize[1] / world.getCellSize + 1)) * 2 + 1;
+
+            // sets the size of the loaded cell 2D array
+            loadedCells = new char[cellsToLoad[1] * world.getCellSize, cellsToLoad[0] * world.getCellSize];
+        }
+
+        /// <summary>
+        /// loads the world cells into the loaded cells array
+        /// </summary>
+        /// <param name="world">world in use</param>
+        /// <param name="player">the player of the game</param>
+        public void setLoadedCells(World world, Player player)
+        {
+            List<intXY> cellsIDToLoad = new List<intXY>();
+            int storeX = 0;
+            int storeY = 0;
+            for(int y = 0; y < cellsToLoad[0]; y++ )
+            {
+                if (!(player.position.cellY + y + (-1 * cellRadiusToLoad[0]) < 0 || player.position.cellY + y + (-1 * cellRadiusToLoad[0]) > world.worldMap.GetLength(0) - 1))
+                {
+                    for (int x = 0; x < cellsToLoad[1]; x++)
+                    {
+                        if(!(player.position.cellX + x + (-1 * cellRadiusToLoad[1]) < 0 || player.position.cellX + x + (-1 * cellRadiusToLoad[1]) > world.worldMap.GetLength(1) - 1))
+                        {
+                            cellsIDToLoad.Add(new intXY(storeX, storeY, player.position.cellX + x + (-1 * cellRadiusToLoad[1]), player.position.cellY + y + (-1 * cellRadiusToLoad[0])));
+                            storeX++;
+                        }
+                    }
+                    storeY++;
+                }
+                storeX = 0;
+            }
+        }
+    }
+
+    class intXY
+    {
+        int x;
+        int y;
+        int cellX;
+        int cellY;
+        public intXY(int x, int y, int cellX, int cellY)
+        {
+            this.x = x;
+            this.y = y;
+            this.cellX = cellX;
+            this.cellY = cellY;
         }
     }
 }

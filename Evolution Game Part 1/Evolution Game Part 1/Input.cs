@@ -79,7 +79,7 @@ namespace Evolution_Game_Part_1
                     // temp solution will need to work with player speed when implemented
                     player.position.y--;
                     // check if cell change happens from movement.  If cell change does not happen revert check
-                    if (!player.position.changeCell(world))
+                    if (!player.position.changeCell(world,display,player))
                     {
                         player.position.y++;
                     }
@@ -95,7 +95,7 @@ namespace Evolution_Game_Part_1
                     // temp solution will need to work with player speed when implemented
                     player.position.x--;
                     // check if cell change happens from movement.  If cell change does not happen revert check
-                    if (!player.position.changeCell(world))
+                    if (!player.position.changeCell(world,display,player))
                     {
                         player.position.x++;
                     }
@@ -112,7 +112,7 @@ namespace Evolution_Game_Part_1
                     // temp solution will need to work with player speed when implemented
                     player.position.y++;
                     // check if cell change happens from movement.  If cell change does not happen revert check
-                    if (!player.position.changeCell(world))
+                    if (!player.position.changeCell(world,display,player))
                     {
                         player.position.y--;
                     }
@@ -129,7 +129,7 @@ namespace Evolution_Game_Part_1
                     // temp solution will need to work with player speed when implemented
                     player.position.x++;
                     // check if cell change happens from movement.  If cell change does not happen revert check
-                    if (!player.position.changeCell(world))
+                    if (!player.position.changeCell(world,display,player))
                     {
                         player.position.x--;
                     }

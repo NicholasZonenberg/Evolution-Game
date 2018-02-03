@@ -26,6 +26,9 @@ namespace Evolution_Game_Part_1
             actorList.Add(player);
             // calls the Setup setup game function to set up the game
             gameSetup.setupGame(player, display);
+            // sets initial display settings
+            display.setLoadedCellsSize(world);
+            display.setLoadedCells(world, player);
 
             // game loop:
             while (true)
