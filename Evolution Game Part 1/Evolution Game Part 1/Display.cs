@@ -129,6 +129,7 @@ namespace Evolution_Game_Part_1
         public void setLoadedCells(World world, Player player)
         {
             List<intXY> cellsIDToLoad = new List<intXY>();
+            bool topRightDefined = true;
             int storeX = 0;
             int storeY = 0;
             for(int y = 0; y < cellsToLoad[0]; y++ )
@@ -139,6 +140,12 @@ namespace Evolution_Game_Part_1
                     {
                         if(!(player.position.cellX + x + (-1 * cellRadiusToLoad[1]) < 0 || player.position.cellX + x + (-1 * cellRadiusToLoad[1]) > world.worldMap.GetLength(1) - 1))
                         {
+                            if(topRightDefined)
+                            {
+                                topRightDefined = false;
+                                cordOfTopRightLoadedTile[0] = (player.position.cellX + x + (-1 * cellRadiusToLoad[0])) * world.getCellSize;
+                                cordOfTopRightLoadedTile[1] = (player.position.cellY + y + (-1 * cellRadiusToLoad[1])) * world.getCellSize;
+                            }
                             cellsIDToLoad.Add(new intXY(storeX, storeY, player.position.cellX + x + (-1 * cellRadiusToLoad[1]), player.position.cellY + y + (-1 * cellRadiusToLoad[0])));
                             storeX++;
                         }
