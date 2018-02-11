@@ -27,6 +27,8 @@ namespace Evolution_Game_Part_1
         private int _cellY;
         // the worldspace that the actor is in.  This might not be needed but could be.
         private string _worldSpace;
+        // world that the location is in
+        World world = new World();
         // Addional data that could be added would be further subdivisions of the game world so that the entire game world is not on one huge grid
 
         // gets and sets the x cordinate of the actor
@@ -35,11 +37,19 @@ namespace Evolution_Game_Part_1
             get { return _x; }
             set { _x = value; }
         }
+        public int xWithCellX
+        {
+            get { return (_x + world.getCellSize * cellX); }
+        }
         // gets and sets y cordinate of the actor
         public int y
         {
             get { return _y; }
             set { _y = value; }
+        }
+        public int yWithCellY
+        {
+            get { return (_y + world.getCellSize * cellY); }
         }
         // gets and sets the z cordinate of the actor
         public int z
